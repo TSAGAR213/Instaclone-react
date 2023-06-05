@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import {GetApi,PORT} from "../Api_Call.js"
+import {GetApi} from "../Api_Call.js"
 import icon from "./icon.jpg"
 import camera from "./camera.jpg"
 import more_icon from "./more_icon.jpg"
@@ -44,7 +44,7 @@ function Post()
         <img className="more-icon" src={more_icon} alt="more-icon"/>
         <h4 className="data-name">{data.name}</h4>
         <p className="data-location">{data.location}</p>
-        <img className={'cimg'} src={`${PORT}/images/${data.PostImage}`} alt={'PostImage'}/>
+        <img className={'cimg'} src={data.PostImage} alt={'PostImage'}/>
         <div className="heartshare">
         <span><img src={heart} alt={'heart'}/></span>
         <span className="share"><img src={share} alt={'share'}/></span>

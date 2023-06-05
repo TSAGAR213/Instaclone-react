@@ -41,7 +41,7 @@ function Form()
        }}>
         <input 
         type="file" 
-        name="imageupload" 
+        name="PostImage" 
         placeholder="No file choosen"
         onChange={(e)=>{
             setImage(e.target.files[0])
