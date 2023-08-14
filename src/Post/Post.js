@@ -16,7 +16,7 @@ function Post()
         .then(data=>{
             setUserList(data)
         })  
-    },[userList])
+    },[])
     let a=userList.reverse();
     return <>
     <div id="postContainer">

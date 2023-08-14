@@ -20,8 +20,7 @@ function Form()
         formdata.append("description",description)
         formdata.append("PostImage",image)
         PostApi(formdata)
-       .then(data=>{})
-        navigate("/posts")
+       .then(data=>{navigate("/posts")})
     }
     return <>
        <div id="formContainer">
