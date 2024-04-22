@@ -31,4 +31,5 @@ max-height: 100%;
   font-size: 25px;
   width: 80px;
   border-radius: 10px;
+  cursor: pointer;
 }

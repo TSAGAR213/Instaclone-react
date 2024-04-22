@@ -3,8 +3,11 @@
   margin: 0px;
 }
 .App {
+  width: 100vw;
+  height: 100vh;
   text-align: center;
   margin: 0px;
+  overflow-x: hidden;
 }
 .App-header {
   background-color: #282c34;
