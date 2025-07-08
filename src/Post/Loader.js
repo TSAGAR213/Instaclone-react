@@ -1,14 +1,14 @@
 import React from "react";
 import "../styles/post.css";
 
-function Loader({userList}) {
+function Loader({text}) {
   return (
-    <div className={`loader ${userList.length > 0 ? "trans" : ""}`}>
+    <div className={`loader`}>
       <div className="img-container">
         <img src={"/loader.svg"} alt="loader-svg" />
       </div>
 
-      <p>Loading Your Posts...</p>
+      <p>{text}...</p>
     </div>
   );
 }

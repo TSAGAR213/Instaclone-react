@@ -4,7 +4,7 @@ import "../styles/form.css";
 import { useNavigate } from "react-router-dom";
 import { PostApi } from "../Api_Call";
 import { useState } from "react";
-
+import Loader from "../Post/Loader";
 
 function Form() {
   let navigate = useNavigate();
@@ -14,14 +14,14 @@ function Form() {
   let [location, setLocation] = useState("");
   let [description, setDescriptio] = useState("");
   let [image, setImage] = useState({});
- 
+  let [showloading, setShowloading] = useState(false);
+
   const [file, setFile] = useState();
   function handleChange(e) {
-       setImage(e.target.files[0]);
-      setFile(URL.createObjectURL(e.target.files[0]));
-      setShowImage(true);
+    setImage(e.target.files[0]);
+    setFile(URL.createObjectURL(e.target.files[0]));
+    setShowImage(true);
   }
-
 
   function AfterPost() {
     let formdata = new FormData();
@@ -30,85 +30,91 @@ function Form() {
     formdata.append("description", description);
     formdata.append("PostImage", image);
     PostApi(formdata).then((data) => {
-     navigate("/posts")
+      setShowloading(false);
+      navigate("/posts");
     });
   }
   return (
     <>
-      <div id="formContainer">
-        <header id="header-bar">
-          <nav id="nav-bar">
-            <ul>
-              <li>
-                <img src={icon} alt="icon" />
-              </li>
-              <li id="ighead">
-                <h2>Instaclone</h2>
-              </li>
-              <li id="camera">
-                <img src={camera} alt="camera" />
-              </li>
-            </ul>
-          </nav>
-        </header>
-        <div id="form">
-          <form
-            encType="multipart/form-data"
-            onSubmit={(e) => {
-              e.preventDefault();
-              AfterPost();
-            }}
-          >
-            <input
-              type="file"
-              name="PostImage"
-              placeholder="No file choosen"
-              onChange={handleChange}
-              required
-            />
-            <br />
-            {
-              showImage && <div id="pr-contain">
-              <img src={file} alt="preview" id="preview"/>
-            </div>
-            }
-            
-            <input
-              id="iauth"
-              type="text"
-              name="author"
-              placeholder="Author"
-              onChange={(e) => {
-                setName(e.target.value);
+      {showloading ? (
+        <Loader text={"Uploading Your Post"} />
+      ) : (
+        <div id="formContainer">
+          <header id="header-bar">
+            <nav id="nav-bar">
+              <ul>
+                <li>
+                  <img src={icon} alt="icon" />
+                </li>
+                <li id="ighead">
+                  <h2>Instaclone</h2>
+                </li>
+                <li id="camera">
+                  <img src={camera} alt="camera" />
+                </li>
+              </ul>
+            </nav>
+          </header>
+          <div id="form">
+            <form
+              encType="multipart/form-data"
+              onSubmit={(e) => {
+                e.preventDefault();
+                setShowloading(true);
+                AfterPost();
               }}
-              required
-            />
-            <input
-              id="iloc"
-              type="text"
-              name="location"
-              placeholder="Location"
-              onChange={(e) => {
-                setLocation(e.target.value);
-              }}
-              required
-            />
-            <br />
-            <input
-              id="idesc"
-              type="text"
-              name="description"
-              placeholder="Description"
-              onChange={(e) => {
-                setDescriptio(e.target.value);
-              }}
-              required
-            />
-            <br />
-            <button type="submit">Post</button>
-          </form>
+            >
+              <input
+                type="file"
+                name="PostImage"
+                placeholder="No file choosen"
+                onChange={handleChange}
+                required
+              />
+              <br />
+              {showImage && (
+                <div id="pr-contain">
+                  <img src={file} alt="preview" id="preview" />
+                </div>
+              )}
+
+              <input
+                id="iauth"
+                type="text"
+                name="author"
+                placeholder="Author"
+                onChange={(e) => {
+                  setName(e.target.value);
+                }}
+                required
+              />
+              <input
+                id="iloc"
+                type="text"
+                name="location"
+                placeholder="Location"
+                onChange={(e) => {
+                  setLocation(e.target.value);
+                }}
+                required
+              />
+              <br />
+              <input
+                id="idesc"
+                type="text"
+                name="description"
+                placeholder="Description"
+                onChange={(e) => {
+                  setDescriptio(e.target.value);
+                }}
+                required
+              />
+              <br />
+              <button type="submit">Post</button>
+            </form>
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 }

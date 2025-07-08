@@ -39,11 +39,11 @@ ul li h2 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #1a1818;
+  background-color: #000c;
   transition: height 0.2 ease;
 }
-.loader .trans{
-    height: 0;
+.loader .trans {
+  height: 0;
 }
 .loader p {
   color: #ffffff;
@@ -71,6 +71,7 @@ ul li h2 {
 }
 .card {
   width: 400px;
+  min-height: 400px;
   margin: 0 auto;
   border: 1px solid #707070;
   margin-top: 50px;
@@ -78,9 +79,88 @@ ul li h2 {
   border-radius: 5px;
   position: relative;
 }
-.card {
-  height: auto;
+.card-load {
+  width: 390px;
+  min-height: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2%;
+  border: 1px solid #707070;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  padding: 1%;
 }
+.card-load .head-div {
+  width: 390px;
+  height: 60px;
+  border-radius: 5px;
+  /* background: linear-gradient(90deg, #eee, #f9f9f9, #eee);
+  background-size: 200%;
+  animation: skeleton 1s infinite reverse; */
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+.card-load .img-div {
+  width: 390px;
+  height: 200px;
+  border-radius: 5px;
+  margin-top: 10px;
+  opacity: 0.7;
+  /* background: linear-gradient(90deg, #eee, #f9f9f9, #eee);
+  background-size: 200%;
+  animation: skeleton 1s infinite reverse; */
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+.card-load .like-icon-div {
+  width: 390px;
+  height: 30px;
+  border-radius: 5px;
+  margin-top: 10px;
+  /* background: linear-gradient(90deg, #eee, #f9f9f9, #eee);
+  background-size: 200%;
+  animation: skeleton 1s infinite reverse; */
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+.card-load .likes-div {
+  width: 390px;
+  height: 30px;
+  border-radius: 5px;
+  margin-top: 10px;
+  /* background: linear-gradient(90deg, #eee, #f9f9f9, #eee);
+  background-size: 200%;
+  animation: skeleton 1s infinite reverse; */
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+.card-load .caption-div {
+  width: 390px;
+  height: 30px;
+  border-radius: 5px;
+  margin-top: 10px;
+  /* background: linear-gradient(90deg, #eee, #f9f9f9, #eee);
+  background-size: 200%;
+  animation: skeleton 1s infinite reverse; */
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loading {
+  from {
+    background-color: hsl(200, 20%, 70%);
+  }
+
+  to {
+    background-color: hsl(200, 20%, 95%);
+  }
+}
+
+/* @keyframes skeleton {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+} */
 .more-icon {
   position: absolute;
   right: 30px;
